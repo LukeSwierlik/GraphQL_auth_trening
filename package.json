@@ -1,0 +1,49 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "Starter pack for an auth-included graphql project",
+  "repository": {
+    "type": "git",
+    "url": "github.com/stephengrider"
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js --ignore client"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-boost": "^0.1.15",
+    "apollo-cache-inmemory": "^1.2.9",
+    "apollo-client": "^2.4.1",
+    "apollo-link-http": "^1.5.4",
+    "axios": "^0.18.0",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-react": "^6.22.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.0",
+    "connect-mongo": "^2.0.1",
+    "express": "^4.14.0",
+    "express-graphql": "^0.6.1",
+    "express-session": "^1.15.0",
+    "graphql": "^14.0.0",
+    "graphql-tag": "^2.9.2",
+    "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^5.2.12",
+    "nodemon": "^1.18.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.4.2",
+    "react-apollo": "^2.1.11",
+    "react-compose": "^2.0.0",
+    "react-dom": "^16.4.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "webpack": "^4.17.1",
+    "webpack-dev-middleware": "^3.2.0"
+  }
+}

@@ -1,2 +1,2 @@
-# GraphQL_auth_trening
-GraphQL_auth_trening
+# auth-graphql-starter
+Starter project from a GraphQL course on Udemy.com - Section 3!
