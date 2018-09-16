@@ -18,20 +18,18 @@ const client = new ApolloClient({
     cache
 });
 
-const Root = () => {
-    return (
-        <ApolloProvider client={client}>
-            <HashRouter>
-                <Layout>
-                    <Switch>
-                        {routes.map((route, index) => (
-                            <Route path={route.path} component={route.component} key={index} exact={route.exact} />
-                        ))}
-                    </Switch>
-                </Layout>
-            </HashRouter>
-        </ApolloProvider>
-    );
-};
+const Root = (
+    <ApolloProvider client={client}>
+        <HashRouter>
+            <Layout>
+                <Switch>
+                    {routes.map((route, index) => (
+                        <Route path={route.path} component={route.component} key={index} exact={route.exact} />
+                    ))}
+                </Switch>
+            </Layout>
+        </HashRouter>
+    </ApolloProvider>
+);
 
-ReactDOM.render(<Root/>, document.querySelector('#root'));
+ReactDOM.render(Root, document.querySelector('#root'));

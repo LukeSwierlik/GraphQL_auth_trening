@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import AuthForm from "./AuthForm";
 import query from "../queries/CurrentUser";
@@ -13,8 +15,18 @@ class SignupForm extends Component {
         }
     }
 
+    componentWillUpdate(nextProps) {
+        const { data, history } = this.props;
+
+        if(!data.user && nextProps.data.user) {
+            history.push('/dashboard');
+        }
+    }
+
+
     onSubmit({ email, password }){
-        const { mutate } = this.props;
+        const { mutate, history } = this.props;
+
         mutate({
             variables: {
                 email,
@@ -22,12 +34,15 @@ class SignupForm extends Component {
             },
             refetchQueries: [{ query }]
         })
+            .then(() => {
+                history.push('/dashboard');
+            })
             .catch(res => {
                 const errors = res.graphQLErrors.map(err => err.message);
 
                 this.setState({
                     errors
-                })
+                });
             });
     }
 
@@ -39,7 +54,9 @@ class SignupForm extends Component {
                 <h1>Register</h1>
 
                 <div className={'row'}>
-                    <AuthForm onSubmit={(state) => this.onSubmit(state)}/>
+                    <AuthForm
+                        onSubmit={(state) => this.onSubmit(state)}
+                    />
 
                     <div className={'col s6'}>
                         {!!errors.length && (
@@ -62,4 +79,8 @@ class SignupForm extends Component {
     }
 }
 
-export default graphql(mutation)(SignupForm);
+export default compose(
+    withRouter,
+    graphql(mutation),
+    graphql(query)
+)(SignupForm);

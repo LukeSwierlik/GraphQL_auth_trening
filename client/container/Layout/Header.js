@@ -1,5 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import query from '../../queries/CurrentUser';
@@ -7,11 +8,13 @@ import mutation from '../../mutations/Logout';
 
 class Header extends React.Component {
     onLogoutClick() {
-        const { mutate } = this.props;
+        const { mutate, history } = this.props;
 
         mutate({
             refetchQueries: [{query}]
         });
+
+        history.push('/');
     };
 
     render() {
@@ -53,6 +56,7 @@ class Header extends React.Component {
 }
 
 export default compose(
+    withRouter,
     graphql(query),
     graphql(mutation)
 )(Header);
